@@ -1,0 +1,7 @@
+{% extends 'base.twig' %}
+{% block content %}
+  <form method="POST" action="/tickets/{{ticket.id|escape('html')}}">
+     <input type="hidden" name="_METHOD" value="patch">
+     {% include 'header.twig' with {'title': 'チケット編集'} %}
+     {% include 'subject.twig' with {'subject': ticket.subject|escape('html'), 'button': '編集'} %}
+{% endblock %}

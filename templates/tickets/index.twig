@@ -1,0 +1,19 @@
+
+  {% extends 'base.twig' %}
+  {% block content %}
+  {% include 'header.twig' with {'title': 'チケット一覧'} %}
+      <a href="/tickets/create">新規作成</a>
+        <ul class="list-group">
+            <?php foreach ($tickets as $ticket): ?>
+            {% for ticket in tickets %}
+              <li class="list-group-item">
+                <a href="/tickets/{{ ticket.id }}">
+                  {{ticket.subject|escape('html')}}
+                </a>
+              </li>
+            {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

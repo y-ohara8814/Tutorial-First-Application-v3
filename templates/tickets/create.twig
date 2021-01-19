@@ -1,0 +1,6 @@
+{% extends 'base.twig' %}
+{% block content %}
+  <form method="POST" action="/tickets">
+     {% include 'header.twig'  with {'title': 'チケット作成あああ'} %}
+     {% include 'subject.twig' with {'button': 'つくる'} %}
+{% endblock %}

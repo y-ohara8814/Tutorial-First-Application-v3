@@ -1,0 +1,54 @@
+{% extends 'base.twig' %}
+{% block content %}
+  {% include 'header.twig' with {'title': 'チケット詳細'} %}
+        <table class="table table-bordered">
+          <thread>
+            <tr>
+              <th>ID</th>
+              <th>件名</th>
+              <th>LINK</th>
+              <th>LINK</th>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td>{{ticket.id|escape('html')}}</td>
+              <td>{{ticket.subject|escape('html')}}</td>
+              <td><a class="popup-youtube" href="https://www.youtube.com/watch?v=ppWj_7iiu04"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Christmas_flood_1717.jpg/1280px-Christmas_flood_1717.jpg" width="172" height="105" /></a></td>
+              <td><a class="popup-image" href="/image/miz8.jpg">Sample Image</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <a href="/tickets/{{ticket.id|escape('html')}}/edit" class="btn btn-primary" id="edit">編集</a>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteModal" tableindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">チケットの削除</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>本当に削除してよろしいですか？</p>
+        </div>
+        <form method="post" action="/tickets/{{ticket.id|escape('html')}}">
+          <input type="hidden" name="_METHOD" value="delete">
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger">削除</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
